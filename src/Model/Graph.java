@@ -2,7 +2,7 @@ package Model;
 
 import java.util.*;
 
-//class to model a graph with helpfull functions
+//class to model a graph with helpful functions
 public class Graph<T>{
     private Map<T, List<T>> graph = new HashMap();
 
@@ -13,12 +13,21 @@ public class Graph<T>{
 
     //adds edges to specific start and end-vertex
     //also checks if vertices already exist
+
+    /**
+     *
+     * adds edges to specific start and end-vertex
+     * also checks if vertices already exist
+     * @param startVertex digit of StartVertex
+     * @param endVertex digit of EndVertex
+     * @param bidirectional should the edge be bidirectional?
+     */
     public void addEdge(T startVertex, T endVertex, boolean bidirectional){
         if(!graph.containsKey(startVertex))
             addVertex(startVertex);
 
         if(!graph.containsKey(endVertex))
-            addVertex(endVertex);
+            return;
 
         if(!graph.get(startVertex).contains(endVertex))
             graph.get(startVertex).add(endVertex);
@@ -43,5 +52,14 @@ public class Graph<T>{
         graph.remove(vertex);
     }
 
+    public boolean containsVertex(T vertex){
+        return graph.containsKey(vertex);
+    }
 
+    //function to give a quick overview about the graph
+    public void printOverview(){
+        for(T key : graph.keySet())
+            System.out.println(key + "; " + graph.get(key));
+
+    }
 }
