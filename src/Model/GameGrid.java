@@ -1,18 +1,19 @@
+
 package Model;
 
 public class GameGrid {
 
     private Graph<Integer> graph;
-    private int rows, columns, numberVertices;
+    private int rows, columns, numberOfVertices;
 
     public GameGrid(int rows, int columns) {
-        graph = new Graph<>();
+        graph = new Graph<Integer>();
         this.rows = rows;
         this.columns = columns;
-        this.numberVertices = rows * columns;
+        this.numberOfVertices = rows * columns;
 
         //loops through each vertex and adds respective edges
-        for(int vertex=1; vertex <= numberVertices; vertex++){
+        for(int vertex = 1; vertex <= numberOfVertices; vertex++){
             createVertexWithEdges(vertex);
         }
     }
@@ -33,7 +34,7 @@ public class GameGrid {
         if(!(vertex % columns == 0)) //right border?
             graph.addEdge(vertex, vertex + 1, true);
 
-        if(!(vertex + columns > numberVertices)) //bottom border?
+        if(!(vertex + columns > numberOfVertices)) //bottom border?
             graph.addEdge(vertex, vertex + columns, true);
     }
 
