@@ -50,4 +50,6 @@ public class GameGrid {
     public void printOverview(){
         graph.printOverview();
     }
+
+    public int getNumberOfVertices(){return this.numberOfVertices;}
 }
